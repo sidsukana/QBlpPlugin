@@ -1,0 +1,3 @@
+[submodule "squishlib"]
+	path = squishlib
+	url = https://github.com/Cavewhere/squish.git

@@ -1,5 +1,6 @@
+#include <squish/squish.h>
+
 #include "qblphandler.h"
-#include "squish.h"
 
 QBlpHandler::QBlpHandler()
 {

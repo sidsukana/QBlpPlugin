@@ -16,9 +16,18 @@ set(QBLP_SOURCE_FILES
     qblphandler.cpp
 )
 
-add_subdirectory(dep)
+add_subdirectory(dep EXCLUDE_FROM_ALL)
 
-qt_add_plugin(${PROJECT_NAME} SHARED CLASS_NAME QExrPlugin)
+qt_add_plugin(${PROJECT_NAME} SHARED CLASS_NAME QBlpPlugin)
 target_sources(${PROJECT_NAME} PRIVATE ${QBLP_SOURCE_FILES})
 
-target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Core Qt6::Gui libsquish::Squish)
+target_link_libraries(${PROJECT_NAME} PRIVATE
+    Qt${QT_VERSION_MAJOR}::Core
+    Qt${QT_VERSION_MAJOR}::Gui
+    libsquish::Squish
+)
+
+install(TARGETS ${PROJECT_NAME}
+    RUNTIME DESTINATION plugins/imageformats COMPONENT Plugins
+    LIBRARY DESTINATION plugins/imageformats COMPONENT Plugins
+)
